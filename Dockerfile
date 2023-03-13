@@ -8,5 +8,5 @@ COPY requirements.txt /weather/
 RUN pip install -r requirements.txt
 
 COPY . /weather/
-CMD [ "python", "main.py", "runserver", "0.0.0.0:80"]
+CMD [ "python", "main.py"]
 EXPOSE 80
