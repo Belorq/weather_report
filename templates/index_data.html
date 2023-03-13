@@ -1,0 +1,56 @@
+
+    <div class="js">
+        <video autoplay muted loop id="videoback">
+            <source src="{{ background }}">
+        </video>
+        <div class="container" style="{{ style }}">
+            <div class="search-box">
+                    <i>
+                    <img src="static\location.svg">
+                    </i>
+                        <input placeholder="enter your location", name="city", autocomplete="off", id="inp", value="{{ city }}">
+                        <button type="submit" id="btn">
+                        <img src="static\search.svg">
+                        </button>
+            </div>
+
+            <div class="weather-box">
+                <img src="{{ img }}">
+                <p class="temperature">{% if data %}{{ data['temp'] }}°C{% else %}{% endif %}</p>
+                <p class="description">{% if data %}{{ data['description'] }}{% else %}{% endif %}</p>
+            </div>
+
+            <div class="weather-details">
+                <div class="humidity">
+                    <i><img src="static\water.png"></i>
+                    <div class="text">
+                        <span>{% if data %}{{ data['humidity'] }}%{% else %}{% endif %}</span>
+                        <p>humidity</p>
+                    </div>
+                </div>
+                <div class="wind">
+                    <i><img src="static\wind.png"></i>
+                    <div class="text">
+                        <span>{% if data %}{{ data['wind'] }}Km/h{% else %}{% endif %}</span>
+                        <p>wind speed </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <script>
+            $( "#btn" ).click(function() {
+                var a = $( "#inp" ).val();
+                $.post( "/", { 'text': a })
+                .done(function( data ) {
+                    $("body").html(data);
+                });
+            });
+            $('body').keyup(function(event){
+                if(event.keyCode == 13){
+                    $("#btn").click()
+                }
+            });
+        </script>
+    </div>
+

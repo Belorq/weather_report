@@ -1,0 +1,32 @@
+
+
+    <div class="container" style="display: block; height: 400px;">
+        <div class="search-box">
+            <i>
+            <img src="static\location.svg">
+            </i>
+                <input placeholder="enter your location", name="city", value="{{ city }}", autocomplete="off", id="inp">
+                <button type="submit" id="btn">
+                <img src="static\search.svg">
+                </button>
+        </div>
+
+            <div class="not-found" style="display: block;">
+                <img src="static\bitmap pc.png">
+                <p>invalid location</p>
+            </div>
+        <script>
+            $( "#btn" ).click(function() {
+                var a = $( "#inp" ).val();
+                $.post( "/", { 'text': a })
+                .done(function( data ) {
+                    $("body").html(data);
+                });
+            });
+            $('body').keyup(function(event){
+                if(event.keyCode == 13){
+                    $("#btn").click()
+                }
+            });
+        </script>
+    </div>
