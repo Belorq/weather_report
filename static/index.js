@@ -8,7 +8,6 @@ function click_btn() {
         });
     });
 }
-
 $(document).ready(function() {
     click_btn();
     $('body').on('keyup', function(event) {
