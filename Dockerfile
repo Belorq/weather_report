@@ -8,5 +8,5 @@ COPY requirements.txt /weather/
 RUN pip install -r requirements.txt
 
 COPY . /weather/
-CMD ["flask", "run", "--host=0.0.0.0:80"]
+CMD ["flask", "run", "--host=0.0.0.0"]
 EXPOSE 80
