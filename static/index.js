@@ -4,7 +4,6 @@ function click_btn() {
         $.post('/', {'text': a})
         .done(function(data) {
             $('body').html(data);
-            click_btn();
         });
     });
 }
