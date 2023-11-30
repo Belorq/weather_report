@@ -1,11 +1,5 @@
-function click_btn() {
-    $('body').on('click', '#btn', function() {
-        var a = $('#inp').val();
-        $.post('/', {'text': a})
-        .done(function(data) {
-            $('body').html(data);
-        });
-    });
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
 }
 $(document).ready(function() {
     click_btn();
