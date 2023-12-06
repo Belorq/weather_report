@@ -13,8 +13,8 @@ def get_city(ip):
 
 @app.route('/', methods=['POST', 'GET'])
 def form():
+    print('running')
     if request.method == 'GET':
-        print(request.remote_addr)
         getcity = get_city(request.remote_addr)
         if getcity:
             city = getcity
